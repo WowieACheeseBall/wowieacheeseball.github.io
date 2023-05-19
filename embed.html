@@ -1,0 +1,128 @@
+<head>
+    <meta charset="utf-8">
+    <title>Fortniteburger</title>
+    <!--makes an embed video of the link in the query string-->
+    <!--e.g.-->
+    <!--
+    https://fortniteburger.ca/embed.html?link=https://www.youtube.com/watch?v=dQw4w9WgXcQ&thumbnail=https://media.discordapp.net/attachments/1097367914337816638/1102056308326277180/IMG_20230426_233551.jpg?width=422&height=624
+    -->
+
+    <!--
+    <meta content="Fortniteburger.ca!!!!!1111!!!!1!!!!!1!111!!" property="og:title" />
+    <meta content="visit fortniteburger.ca for free money!!!!" property="og:description" />
+    <meta content="#43B581" data-react-helmet="true" name="theme-color" />
+    -->
+
+    
+</head>
+
+<!--center div-->
+<!--
+file:///C:/Users/brads/Desktop/code/fortniteburger.ca/embed.html?link=https://video.twimg.com/ext_tw_video/1659385473058349057/pu/vid/1280x720/hsuvzNysUc7xDvW1.mp4&thumbnail=https://media.discordapp.net/attachments/1097367914337816638/1102056308326277180/IMG_20230426_233551.jpg?width=422&height=624
+-->
+
+<div style="text-align:center;">
+
+    <!--main content-->
+
+    <main>
+
+        
+
+    </main>
+
+    <!--footer-->
+
+    <footer>
+
+        <p>REBORN &copy; 2023</p>
+
+    </footer>
+</div>
+</html>
+
+<script>
+    const getQueryVariable = (variable) => {
+        const query = window.location.search.substring(1);
+        const vars = query.split("&");
+        for (let i = 0; i < vars.length; i++) {
+            const pair = vars[i].split("=");
+            if (pair[0] == variable) {
+                return pair[1];
+            }
+        }
+        return (false);
+    }
+
+    const getVideoURL = () => {
+        const link = getQueryVariable("link");
+        if (link) {
+            return link;
+        } else {
+            return "https://video.twimg.com/ext_tw_video/1659385473058349057/pu/vid/1280x720/hsuvzNysUc7xDvW1.mp4";
+            // Link must be a direct link to a video file!
+        }
+    }
+
+    const getThumbnailURL = () => {
+        const thumbnail = getQueryVariable("thumbnail");
+        if (thumbnail) {
+            return thumbnail;
+        } else {
+            return "https://media.discordapp.net/attachments/1097367914337816638/1102056308326277180/IMG_20230426_233551.jpg?width=422&height=624";
+        }
+    }
+
+    // Generate embed
+    const videoURL = getVideoURL();
+    const thumbnailURL = getThumbnailURL();
+
+    const embed = document.createElement("iframe");
+    embed.setAttribute("src", videoURL);
+    embed.setAttribute("width", "1280");
+    embed.setAttribute("height", "720");
+    embed.setAttribute("frameborder", "0");
+    embed.setAttribute("allow", "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture");
+    embed.setAttribute("allowfullscreen", "true");
+    
+    const thumbnail = document.createElement("img");
+    thumbnail.setAttribute("src", thumbnailURL);
+    thumbnail.setAttribute("alt", "Fortniteburger");
+
+    document.body.appendChild(embed);
+    document.body.appendChild(thumbnail);
+
+    //create a discord embed with the video and thumbnail
+    /*
+    like tghis stuff
+    <meta content="Fortniteburger.ca!!!!!1111!!!!1!!!!!1!111!!" property="og:title" />
+    <meta content="visit fortniteburger.ca for free money!!!!" property="og:description" />
+    <meta content="#43B581" data-react-helmet="true" name="theme-color" />
+    */
+
+    const title = document.createElement("meta");
+    title.setAttribute("content", "Fortniteburger.ca!!!!!1111!!!!1!!!!!1!111!!");
+    title.setAttribute("property", "og:title");
+    
+    const description = document.createElement("meta");
+    description.setAttribute("content", "visit fortniteburger.ca for free money!!!!");
+    description.setAttribute("property", "og:description");
+
+    const themeColor = document.createElement("meta");
+    themeColor.setAttribute("content", "#43B581");
+    themeColor.setAttribute("data-react-helmet", "true");
+    themeColor.setAttribute("name", "theme-color");
+
+    const ogvideo = document.createElement("meta");
+    ogvideo.setAttribute("og:video:url", videoURL);
+    
+    const ogimage = document.createElement("meta");
+    ogimage.setAttribute("og:image", thumbnailURL);
+    
+    document.head.appendChild(title);
+    document.head.appendChild(description);
+    document.head.appendChild(themeColor);
+    document.head.appendChild(ogvideo);
+    document.head.appendChild(ogimage);
+
+</script>
