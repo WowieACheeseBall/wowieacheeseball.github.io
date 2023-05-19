@@ -1,21 +1,3 @@
-<head>
-    <meta charset="utf-8">
-    <title>Fortniteburger</title>
-    <!--makes an embed video of the link in the query string-->
-    <!--e.g.-->
-    <!--
-    https://fortniteburger.ca/embed.html?link=https://www.youtube.com/watch?v=dQw4w9WgXcQ&thumbnail=https://media.discordapp.net/attachments/1097367914337816638/1102056308326277180/IMG_20230426_233551.jpg?width=422&height=624
-    -->
-
-    <!--
-    <meta content="Fortniteburger.ca!!!!!1111!!!!1!!!!!1!111!!" property="og:title" />
-    <meta content="visit fortniteburger.ca for free money!!!!" property="og:description" />
-    <meta content="#43B581" data-react-helmet="true" name="theme-color" />
-    -->
-
-    
-</head>
-
 <!--center div-->
 <!--
 file:///C:/Users/brads/Desktop/code/fortniteburger.ca/embed.html?link=https://video.twimg.com/ext_tw_video/1659385473058349057/pu/vid/1280x720/hsuvzNysUc7xDvW1.mp4&thumbnail=https://media.discordapp.net/attachments/1097367914337816638/1102056308326277180/IMG_20230426_233551.jpg?width=422&height=624
@@ -55,7 +37,7 @@ file:///C:/Users/brads/Desktop/code/fortniteburger.ca/embed.html?link=https://vi
     }
 
     const getVideoURL = () => {
-        const link = getQueryVariable("link");
+        const link = getQueryVariable("video");
         if (link) {
             return link;
         } else {
@@ -65,7 +47,7 @@ file:///C:/Users/brads/Desktop/code/fortniteburger.ca/embed.html?link=https://vi
     }
 
     const getThumbnailURL = () => {
-        const thumbnail = getQueryVariable("thumbnail");
+        const thumbnail = getQueryVariable("image");
         if (thumbnail) {
             return thumbnail;
         } else {
@@ -92,37 +74,26 @@ file:///C:/Users/brads/Desktop/code/fortniteburger.ca/embed.html?link=https://vi
     document.body.appendChild(embed);
     document.body.appendChild(thumbnail);
 
-    //create a discord embed with the video and thumbnail
-    /*
-    like tghis stuff
-    <meta content="Fortniteburger.ca!!!!!1111!!!!1!!!!!1!111!!" property="og:title" />
-    <meta content="visit fortniteburger.ca for free money!!!!" property="og:description" />
-    <meta content="#43B581" data-react-helmet="true" name="theme-color" />
-    */
+</script>
 
-    const title = document.createElement("meta");
-    title.setAttribute("content", "Fortniteburger.ca!!!!!1111!!!!1!!!!!1!111!!");
-    title.setAttribute("property", "og:title");
-    
-    const description = document.createElement("meta");
-    description.setAttribute("content", "visit fortniteburger.ca for free money!!!!");
-    description.setAttribute("property", "og:description");
+<head>
+    <!--Now we add our query stuff here,-->
+    <!-- get video and image -->
+    <meta property="og:image" content="" />
+    <meta property="og:type" content="video.other" />
+    <meta property="og:video:url" content="" />
+    <meta property="og:video:type" content="video/mp4" />
+    <meta property="og:video:width" content="1280" />
+</head>
 
-    const themeColor = document.createElement("meta");
-    themeColor.setAttribute("content", "#43B581");
-    themeColor.setAttribute("data-react-helmet", "true");
-    themeColor.setAttribute("name", "theme-color");
+<script>
+    // set the properties of the video
+    ogimage = document.querySelector("meta[property='og:image']");
+    ogimage.setAttribute("content", getThumbnailURL());
 
-    const ogvideo = document.createElement("meta");
-    ogvideo.setAttribute("og:video:url", videoURL);
-    
-    const ogimage = document.createElement("meta");
-    ogimage.setAttribute("og:image", thumbnailURL);
-    
-    document.head.appendChild(title);
-    document.head.appendChild(description);
-    document.head.appendChild(themeColor);
-    document.head.appendChild(ogvideo);
-    document.head.appendChild(ogimage);
+    ogtype = document.querySelector("meta[property='og:type']");
+    ogtype.setAttribute("content", "video.other");
 
+    ogvideourl = document.querySelector("meta[property='og:video:url']");
+    ogvideourl.setAttribute("content", getVideoURL());
 </script>
